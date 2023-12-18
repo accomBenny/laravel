@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,4 +28,14 @@ Route::group([
     Route::post('/delete', [CommentController::class, 'delete']);
     // Route::post('/delete{id}', [CommentController::class, 'delete']);
     Route::post('/update', [CommentController::class, 'update']);
+});
+
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('/register', [AuthController::class, "register"]);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::get('logout', [AuthController::class, 'logout']);
+    Route::get('refresh', [AuthController::class, 'refresh']);
+    Route::get('me', [AuthController::class, 'me']);
 });

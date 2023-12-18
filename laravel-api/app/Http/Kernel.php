@@ -25,7 +25,6 @@ class Kernel extends HttpKernel
 
     /**
      * The application's route middleware groups.
-     *
      * @var array<string, array<int, class-string|string>>
      */
     protected $middlewareGroups = [
@@ -62,5 +61,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'jwt.verified' => \App\Http\Middleware\JwtVerifiedMiddleware::class,
     ];
 }
